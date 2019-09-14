@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'ua.nure.baranov'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.tilab.jade', name: 'jade', version: '4.5.0'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.4.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.4.1"
+}
+
+test {
+    useJUnitPlatform()
+}
