@@ -2,6 +2,8 @@ package ua.nure.baranov.quickstart;
 
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.TickerBehaviour;
+import ua.nure.baranov.quickstart.behaviour.RequestPerformer;
 
 public class BookBuyer extends Agent {
 
@@ -19,6 +21,12 @@ public class BookBuyer extends Agent {
         if (arguments != null && arguments.length != 0) {
             targetBookTitle = (String) arguments[0];
             System.out.println("I'll try to buy " + targetBookTitle);
+            addBehaviour(new TickerBehaviour(this, 60000) {
+                @Override
+                protected void onTick() {
+                    myAgent.addBehaviour(new RequestPerformer());
+                }
+            });
         } else {
             System.out.println("Don't have anything to buy. Bye!");
             doDelete();
