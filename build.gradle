@@ -17,8 +17,8 @@ repositories {
 
 dependencies {
     implementation "com.tilab.jade:jade:4.5.0"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.4.1"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.4.1"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.4"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.4"
 }
 
 test {
