@@ -21,7 +21,7 @@ public class BookSeller extends Agent {
         gui = new BookSellerGui(this);
         gui.show();
 
-        addBehaviour(new OffsetRequestsServer());
+        addBehaviour(new OffsetRequestsServer(catalogue));
         addBehaviour(new PurchaseOrdersServer());
     }
 
