@@ -1,4 +1,4 @@
-package ua.nure.baranov.quickstart.behaviour;
+package ua.nure.baranov.quickstart.examples.behaviour;
 
 import jade.core.behaviours.Behaviour;
 
