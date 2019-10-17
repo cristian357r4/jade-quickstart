@@ -32,6 +32,7 @@ public class BookSeller extends Agent {
         addBehaviour(new PurchaseOrdersServer());
 
         // Register the agent!
+        System.out.println("Registering the seller");
 
         final DFAgentDescription description = new DFAgentDescription();
         description.setName(this.getAID());
@@ -109,6 +110,8 @@ public class BookSeller extends Agent {
                     reply.setPerformative(ACLMessage.REFUSE);
                     reply.setContent(BOOK_NOT_AVAILABLE_MESSAGE);
                 }
+                myAgent.send(reply);
+                myAgent.doDelete();
             } else {
                 // We don't have the message yet, stop consuming the CPU resources and just wait for one.
                 block();

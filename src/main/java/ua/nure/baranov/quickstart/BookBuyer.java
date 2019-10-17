@@ -13,8 +13,7 @@ import jade.lang.acl.MessageTemplate;
 
 import java.util.Arrays;
 
-import static jade.lang.acl.MessageTemplate.MatchConversationId;
-import static jade.lang.acl.MessageTemplate.MatchReplyWith;
+import static jade.lang.acl.MessageTemplate.*;
 
 public class BookBuyer extends Agent {
 
@@ -54,7 +53,7 @@ public class BookBuyer extends Agent {
                 }
             });
 
-            addBehaviour(new TickerBehaviour(this, 60000) {
+            addBehaviour(new TickerBehaviour(this, 20000) {
                 @Override
                 protected void onTick() {
                     myAgent.addBehaviour(new RequestPerformer());
@@ -93,7 +92,7 @@ public class BookBuyer extends Agent {
                     callForProposal.setReplyWith(String.format("cfp %d", System.currentTimeMillis()));
                     myAgent.send(callForProposal);
                     template = MessageTemplate.and(MatchConversationId(BOOK_TRADE_CONVERSATION_ID),
-                            MatchReplyWith(callForProposal.getReplyWith()));
+                            MessageTemplate.MatchInReplyTo(callForProposal.getReplyWith()));
                     step = 1;
                     break;
                 case 1:
@@ -123,7 +122,7 @@ public class BookBuyer extends Agent {
                     myAgent.send(order);
 
                     template = MessageTemplate.and(MatchConversationId(BOOK_TRADE_CONVERSATION_ID),
-                            MatchReplyWith(order.getReplyWith()));
+                            MatchInReplyTo(order.getReplyWith()));
                     step = 3;
                     break;
                 case 3:
